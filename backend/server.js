@@ -1,12 +1,13 @@
 const http = require('http')
-function process_request(req, res) {
- const body = 'Witaj na platformie Node!\n'
- const content_length = body.length
- res.writeHead(200, {
- 'Content-Length': content_length,
- 'Content-Type': 'text/plain'
- });
- res.end(body)
-}
-const server = http.createServer(process_request)
-server.listen(3000, () => console.log('Serwer działa!'))
+require('dotenv').config()
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const mongoose = require('mongoose')
+
+app.use(express.json())
+app.use(cors())
+const connection1 = require('./db')
+connection1()
+
+app.listen(3000, () => console.log('Serwer działa!'))

@@ -1,10 +1,12 @@
 FROM node
 
-WORKDIR /app
+WORKDIR .
 
 COPY package.json .
 
-RUN npm install
+RUN npm install 
+
+RUN npm install --save dotenv
 
 COPY . .
 
